@@ -1,5 +1,3 @@
-
-
 .color {
   color: white;
   text-align: center;
@@ -11,28 +9,27 @@
   padding: 20px;
 }
 .pixel {
-    text-align: center;
-    display: inline-block;
-    border: 1px solid black;
-    height: 40px;
-    width: 40px;
-    padding: 20px;
-    background-color: white;
-  }
-
-.black{
-    background-color: black;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  padding: 20px;
+  background-color: white;
 }
 
-.red{
-    background-color: red;
+.black {
+  background-color: black;
 }
 
-.blue{
-    background-color: blue;
+.red {
+  background-color: red;
 }
 
-.green{
-    background-color: green;
+.blue {
+  background-color: blue;
 }
 
+.green {
+  background-color: green;
+}
