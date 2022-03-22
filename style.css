@@ -8,6 +8,10 @@
   width: 50px;
   padding: 20px;
 }
+#pixel-board{
+width: 420px;
+}
+
 .pixel {
   text-align: center;
   display: inline-block;
@@ -16,20 +20,4 @@
   width: 40px;
   padding: 20px;
   background-color: white;
-}
-
-.black {
-  background-color: black;
-}
-
-.red {
-  background-color: red;
-}
-
-.blue {
-  background-color: blue;
-}
-
-.green {
-  background-color: green;
 }
