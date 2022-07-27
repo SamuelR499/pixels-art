@@ -2,16 +2,16 @@ const quadroPixel = document.getElementById('pixel-board');
 const colorPalette = document.getElementById('color-palette');
 
 const blackColor = document.getElementsByClassName('black')[0];
-blackColor.style.backgroundColor ='black';
+blackColor.style.backgroundColor = 'black';
 
 const redColor = document.getElementsByClassName('red')[0];
-redColor.style.backgroundColor ='red';
+redColor.style.backgroundColor = 'red';
 
 const blueColor = document.getElementsByClassName('blue')[0];
-blueColor.style.backgroundColor ='blue';
+blueColor.style.backgroundColor = 'blue';
 
 const greenColor = document.getElementsByClassName('green')[0];
-greenColor.style.backgroundColor ='green';
+greenColor.style.backgroundColor = 'green';
 
 // console.log(quadroPixel);
 
@@ -38,22 +38,32 @@ function alteraselected(evnt) {
 const board = document.getElementById('pixel-board');
 const caixinha = document.querySelectorAll('.pixel');
 
-function pintar (evt){
+function pintar(evt) {
     let corAtual = document.querySelector('.selected').style.backgroundColor;
-evt.target.style.backgroundColor = corAtual;
-// console.log('click!' + evt);
+    evt.target.style.backgroundColor = corAtual;
+    // console.log('click!' + evt);
 }
 
 board.addEventListener('click', pintar)
 
-function clear(){
-    for(i of caixinha){
+function clear() {
+    for (i of caixinha) {
         i.style.backgroundColor = 'white'
     }
-    
+
     // console.log('btn click');
 }
 
 let btnClear = document.getElementById('clear-board');
 
 btnClear.addEventListener('click', clear);
+
+function gerarMoreGrade() {
+    const inputVQV = document.getElementById('board-size');
+    if (inputVQV.value < 0 || inputVQV.value === '') {
+        alert('Board inválido!')
+    }
+}
+
+const btnVQV = document.getElementById('generate-board');
+btnVQV.addEventListener('click', gerarMoreGrade)

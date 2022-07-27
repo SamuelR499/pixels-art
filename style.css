@@ -1,3 +1,18 @@
+body {
+  background-color: #6b5b95;
+}
+
+#clear-board {
+  margin-right: 100px;
+}
+
+#board-size {
+  width: 50px;
+}
+button {
+  background-color: #feb236;
+  border-radius: 10px;
+}
 .color {
   color: white;
   text-align: center;
@@ -8,8 +23,8 @@
   width: 50px;
   padding: 20px;
 }
-#pixel-board{
-width: 420px;
+#pixel-board {
+  width: 420px;
 }
 
 .pixel {
