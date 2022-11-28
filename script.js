@@ -1,69 +1,116 @@
-const quadroPixel = document.getElementById('pixel-board');
-const colorPalette = document.getElementById('color-palette');
+const $ = document;
+const colorSet = ['black'];
+const pixelBoard = $.getElementById('pixel-board');
+const generateBtn = $.getElementById('generate-board');
+const boardInput = $.getElementById('board-size');
+const clearBoard = $.getElementById('clear-board');
+let chosenColor;
+function CE(element, text, addClass, parent = $.getElementsByTagName('body')[0]) {
+  const target = $.createElement(element);
+  target.innerText = text;
+  target.classList.add(addClass);
+  parent.appendChild(target);
+  return target;
+}
 
-const blackColor = document.getElementsByClassName('black')[0];
-blackColor.style.backgroundColor = 'black';
+//  Generates Palette.
 
-const redColor = document.getElementsByClassName('red')[0];
-redColor.style.backgroundColor = 'red';
-
-const blueColor = document.getElementsByClassName('blue')[0];
-blueColor.style.backgroundColor = 'blue';
-
-const greenColor = document.getElementsByClassName('green')[0];
-greenColor.style.backgroundColor = 'green';
-
-// console.log(quadroPixel);
-
-for (let coluna = 0; coluna < 5; coluna++) {
-    const element = document.createElement('br');
-    quadroPixel.appendChild(element);
-
-    for (linha = 0; linha < 5; linha++) {
-        const px = document.createElement('div');
-        px.classList = 'pixel';
-        quadroPixel.appendChild(px);
+function repetitionChecker(rgb) {
+  for (let i = 0; i < colorSet.length; i += 1) {
+    if (rgb === colorSet[i]) {
+      return true;
     }
+  }
+  return false;
 }
-
-
-colorPalette.addEventListener('click', alteraselected)
-
-function alteraselected(evnt) {
-    let colorSelec = document.querySelector('.selected');
-    colorSelec.classList.remove('selected')
-    evnt.target.classList.add('selected')
-    // console.log(colorSelec.style.backgroundColor);
-}
-const board = document.getElementById('pixel-board');
-const caixinha = document.querySelectorAll('.pixel');
-
-function pintar(evt) {
-    let corAtual = document.querySelector('.selected').style.backgroundColor;
-    evt.target.style.backgroundColor = corAtual;
-    // console.log('click!' + evt);
-}
-
-board.addEventListener('click', pintar)
-
-function clear() {
-    for (i of caixinha) {
-        i.style.backgroundColor = 'white'
+function generatesPalette(num) {
+  for (let i = 1; i < num; i += 1) {
+    const color = `rgb(
+    ${Math.floor(Math.random() * (256))},
+    ${Math.floor(Math.random() * (256))},
+    ${Math.floor(Math.random() * (256))}
+    )`;
+    if (repetitionChecker(color) !== false) {
+      i -= 1;
+    } else {
+      colorSet[i] = color;
     }
-
-    // console.log('btn click');
+  }
+}
+function deselecetAll() {
+  const colorDivs = $.getElementsByClassName('color');
+  for (let i = 0; i < colorDivs.length; i += 1) {
+    colorDivs[i].classList.remove('selected');
+  }
+}
+function choosesColor(event) {
+  const div = event.target;
+  chosenColor = div.style.backgroundColor;
+  deselecetAll();
+  div.classList.add('selected');
+}
+function colorInitializer() {
+  deselecetAll();
+  const firstColor = $.getElementsByClassName('color')[0];
+  chosenColor = firstColor.style.backgroundColor;
+  firstColor.classList.add('selected');
+}
+function colorCellsGenerator(num) {
+  generatesPalette(num);
+  for (let i = 0; i < colorSet.length; i += 1) {
+    const div = CE('div', '', 'color', $.getElementById('color-palette'));
+    div.style.backgroundColor = colorSet[i];
+    div.addEventListener('click', choosesColor);
+  }
+  colorInitializer();
 }
 
-let btnClear = document.getElementById('clear-board');
+//  Generates and clears board.
 
-btnClear.addEventListener('click', clear);
-
-function gerarMoreGrade() {
-    const inputVQV = document.getElementById('board-size');
-    if (inputVQV.value < 0 || inputVQV.value === '') {
-        alert('Board inválido!')
+function changesColor(event) {
+  const div = event.target;
+  div.style.backgroundColor = chosenColor;
+}
+function fillLine(size) {
+  for (let i = 0; i < size; i += 1) {
+    const div = CE('div', '', 'pixel', pixelBoard);
+    div.addEventListener('click', changesColor);
+  }
+}
+function boardGenerator(size) {
+  pixelBoard.style.width = `${size * (40 + (2 / window.devicePixelRatio))}px`;
+  pixelBoard.style.height = `${size * (40 + (2 / window.devicePixelRatio))}px`;
+  for (let i = 0; i < size; i += 1) {
+    fillLine(size);
+  }
+}
+function readsSize() {
+  if (boardInput.value !== '') {
+    if (boardInput.value < 5) {
+      alert('Invalid range.');
+      return 5;
     }
+    if (boardInput.value > 50) {
+      return 50;
+    }
+    return boardInput.value;
+  }
+  alert('Board inválido!');
+  return 0;
 }
-
-const btnVQV = document.getElementById('generate-board');
-btnVQV.addEventListener('click', gerarMoreGrade)
+function clears() {
+  const pixels = $.getElementsByClassName('pixel');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+}
+//  Executes code.
+boardGenerator(5);
+colorCellsGenerator(4);
+generateBtn.addEventListener('click', () => {
+  pixelBoard.innerHTML = '';
+  boardGenerator(readsSize());
+});
+clearBoard.addEventListener('click', () => {
+  clears();
+});

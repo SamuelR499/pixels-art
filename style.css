@@ -1,38 +1,38 @@
-body {
-  background-color: #6b5b95;
-}
-
-#clear-board {
-  margin-right: 100px;
-}
-
-#board-size {
-  width: 50px;
-}
-button {
-  background-color: #feb236;
-  border-radius: 10px;
-}
 .color {
-  color: white;
-  text-align: center;
+  width: 80px;
+  height: 80px;
+  border: solid 1px black;
   display: inline-block;
-  line-height: 50px;
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
-  padding: 20px;
+  margin: 1px;
 }
+
+#topPage {
+  text-align: center;
+}
+
+#color-palette {
+  margin: auto;
+  width: fit-content;
+  height: 84px;
+  border: solid 4px black;
+}
+
+#inputBox {
+  margin: auto;
+  padding: 40px 0;
+  text-align: center;
+}
+
 #pixel-board {
-  width: 420px;
+  margin: auto;
+  border: solid 4px black;
+  line-height: 0px;
 }
 
 .pixel {
-  text-align: center;
-  display: inline-block;
-  border: 1px solid black;
-  height: 40px;
   width: 40px;
-  padding: 20px;
+  height: 40px;
+  border: solid 1px black;
+  display: inline-block;
   background-color: white;
 }
