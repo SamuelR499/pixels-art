@@ -5,6 +5,7 @@ const generateBtn = $.getElementById('generate-board');
 const boardInput = $.getElementById('board-size');
 const clearBoard = $.getElementById('clear-board');
 let chosenColor;
+
 function CE(element, text, addClass, parent = $.getElementsByTagName('body')[0]) {
   const target = $.createElement(element);
   target.innerText = text;
@@ -13,31 +14,29 @@ function CE(element, text, addClass, parent = $.getElementsByTagName('body')[0])
   return target;
 }
 
-//  Generates Palette.
-
-function repetitionChecker(rgb) {
+function colorCheck(color) {
   for (let i = 0; i < colorSet.length; i += 1) {
-    if (rgb === colorSet[i]) {
+    if (color === colorSet[i]) {
       return true;
     }
   }
   return false;
 }
-function generatesPalette(num) {
-  for (let i = 1; i < num; i += 1) {
+function generatesPalette(number) {
+  for (let i = 1; i < number; i += 1) {
     const color = `rgb(
     ${Math.floor(Math.random() * (256))},
     ${Math.floor(Math.random() * (256))},
     ${Math.floor(Math.random() * (256))}
     )`;
-    if (repetitionChecker(color) !== false) {
+    if (colorCheck(color) !== false) {
       i -= 1;
     } else {
       colorSet[i] = color;
     }
   }
 }
-function deselecetAll() {
+function clearAll() {
   const colorDivs = $.getElementsByClassName('color');
   for (let i = 0; i < colorDivs.length; i += 1) {
     colorDivs[i].classList.remove('selected');
@@ -46,11 +45,11 @@ function deselecetAll() {
 function choosesColor(event) {
   const div = event.target;
   chosenColor = div.style.backgroundColor;
-  deselecetAll();
+  clearAll();
   div.classList.add('selected');
 }
 function colorInitializer() {
-  deselecetAll();
+  clearAll();
   const firstColor = $.getElementsByClassName('color')[0];
   chosenColor = firstColor.style.backgroundColor;
   firstColor.classList.add('selected');
