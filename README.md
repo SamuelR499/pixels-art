@@ -3,6 +3,8 @@
 Boas-vindas, neste projeto de avaliação prática, utilizei todo o conhecimento adquirido na seção 5 do curso de Desenvolvimento Web da Trybe.
 Esse projeto se trata de uma página onde é possível criar artes em pixeis de vários tamanhos.
 
+<img src="./pixels-art.png" width="350" />
+
 ## Ferramentas
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
