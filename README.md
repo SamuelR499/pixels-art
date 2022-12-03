@@ -3,7 +3,7 @@
 Boas-vindas, neste projeto de avaliação prática, utilizei todo o conhecimento adquirido na seção 5 do curso de Desenvolvimento Web da Trybe.
 Esse projeto se trata de uma página onde é possível criar artes em pixeis de vários tamanhos.
 
-<img src="./pixels-art.png" width="350" />
+<img src="./pixels-art.png" width="500" />
 
 ## Ferramentas
 
@@ -33,7 +33,7 @@ Esse projeto se trata de uma página onde é possível criar artes em pixeis de 
 clone este repositório:
 
 ```sh
-git clone 
+git clone git@github.com:SamuelR499/pixels-art.git
 ```
 
 acesse o repositório clonado
